@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Mersi Hero of the Month</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f5f5f7; --bg3:#fafafa;
+  --ink:#1d1d1f; --muted:#6e6e73; --muted2:#86868b;
+  --line:#d2d2d7; --line2:#e8e8ed;
+  --blue:#0071e3; --blue-h:#0077ed; --blue-p:#006edb;
+  --green:#34c759; --red:#ff3b30; --amber:#ff9f0a;
+  --gold:#b8860b;
+  --radius:18px; --radius-s:12px;
+  --shadow:0 4px 24px rgba(0,0,0,.06); --shadow-l:0 8px 40px rgba(0,0,0,.12);
+  --nav-h:48px;
+  --font:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display','Sukhumvit Set','Inter','Noto Sans Thai','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.47;font-size:17px;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;letter-spacing:-.01em;
+  padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:-.022em;line-height:1.08}
+button{font-family:inherit;letter-spacing:-.01em}
+a{color:var(--blue);text-decoration:none}
+.hide{display:none!important}
+.muted{color:var(--muted)}
+
+/* ---------- Nav (frosted) ---------- */
+.nav{position:sticky;top:0;z-index:50;height:var(--nav-h);
+  background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;gap:14px;padding:0 20px;
+  padding-top:env(safe-area-inset-top)}
+.nav .brand{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.nav .brand .mark{width:26px;height:26px;border-radius:7px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px}
+.nav .sp{flex:1}
+.nav .month{appearance:none;background:var(--bg2);border:0;border-radius:980px;padding:6px 30px 6px 14px;font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%236e6e73' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;background-position:right 12px center;outline:none}
+.nav .who{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.nav .who .ava{width:28px;height:28px;border-radius:50%;background:var(--bg2);color:var(--ink);display:grid;place-items:center;font-weight:600;font-size:12px}
+.nav .lo{background:none;border:0;color:var(--blue);font-size:13px;font-weight:500;cursor:pointer;padding:6px 4px}
+.nav .gear{background:none;border:0;cursor:pointer;font-size:15px;color:var(--muted);padding:4px}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:920px;margin:0 auto;padding:0 22px}
+.section{padding:54px 0}
+@media(max-width:600px){.section{padding:34px 0}}
+.center{text-align:center}
+.btn{appearance:none;border:0;border-radius:980px;background:var(--blue);color:#fff;font-size:17px;font-weight:500;
+  padding:12px 26px;cursor:pointer;transition:background .2s,transform .06s;white-space:nowrap}
+.btn:hover{background:var(--blue-h)}
+.btn:active{background:var(--blue-p);transform:scale(.99)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn.sec{background:var(--bg2);color:var(--ink)}
+.btn.sec:hover{background:#ececef}
+.btn.lg{padding:14px 32px;font-size:19px}
+.btn.full{width:100%}
+.btn.sm{padding:8px 18px;font-size:15px}
+.link{color:var(--blue);font-size:15px;font-weight:500;cursor:pointer;background:none;border:0;padding:8px 0;display:inline-flex;align-items:center;gap:5px}
+
+/* ---------- Login ---------- */
+.login-wrap{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 22px;text-align:center}
+.login-wrap .eyebrow{color:var(--blue);font-weight:600;font-size:19px;margin-bottom:6px;letter-spacing:-.01em}
+.login-wrap h1{font-size:clamp(34px,6vw,56px);margin-bottom:10px}
+.login-wrap .sub{font-size:clamp(18px,3vw,21px);color:var(--muted);max-width:520px;margin:0 auto 6px;font-weight:400}
+.login-card{background:var(--bg2);border-radius:22px;padding:30px;max-width:380px;width:100%;margin-top:34px;text-align:left}
+.fld{margin-bottom:14px}
+.fld label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin:0 0 7px 2px}
+.input{width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 15px;font-size:17px;font-family:inherit;color:var(--ink);outline:none;transition:.15s}
+.input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,113,227,.15)}
+.login-err{color:var(--red);font-size:14px;margin:2px 2px 12px;min-height:18px}
+
+/* ---------- Hero / page heads ---------- */
+.hero{padding:48px 0 26px;text-align:center}
+.hero h1{font-size:clamp(30px,5vw,48px);margin-bottom:12px}
+.hero p{font-size:clamp(17px,2.4vw,21px);color:var(--muted);max-width:620px;margin:0 auto;font-weight:400}
+.pagehead{padding:30px 0 8px}
+.pagehead h2{font-size:clamp(26px,4vw,38px)}
+.pagehead .lead{color:var(--muted);font-size:18px;margin-top:6px}
+
+/* ---------- Cards ---------- */
+.card{background:#fff;border:1px solid var(--line2);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+.card+.card{margin-top:18px}
+.grid2{display:grid;gap:18px;grid-template-columns:1fr}
+@media(min-width:640px){.grid2{grid-template-columns:1fr 1fr}}
+.tile{background:var(--bg2);border-radius:var(--radius);padding:30px 26px;cursor:pointer;transition:.18s;border:1px solid transparent}
+.tile:hover{transform:translateY(-3px);box-shadow:var(--shadow-l);background:#fff;border-color:var(--line2)}
+.tile .ic{font-size:30px;margin-bottom:14px}
+.tile h3{font-size:22px;margin-bottom:6px}
+.tile p{color:var(--muted);font-size:15px;margin:0}
+.tile .go{color:var(--blue);font-size:15px;font-weight:500;margin-top:14px;display:inline-block}
+
+/* prize strip */
+.prizes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:560px;margin:30px auto 0}
+.prize{background:var(--bg2);border-radius:var(--radius-s);padding:18px 12px;text-align:center}
+.prize .r{font-size:13px;color:var(--muted)}
+.prize .a{font-size:23px;font-weight:600;margin-top:3px}
+.prize.first{background:#fff8e6}
+.prize.first .a{color:var(--gold)}
+
+/* ---------- Eval items ---------- */
+.block-title{font-size:13px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.04em;margin:34px 4px 14px}
+.item{padding:18px 0;border-top:1px solid var(--line2)}
+.item:first-child{border-top:0}
+.item .q{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:12px}
+.item .q .t{font-size:16px;font-weight:500;line-height:1.35}
+.item .q .mx{font-size:13px;color:var(--muted2);white-space:nowrap;flex:0 0 auto}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{flex:1 1 0;min-width:40px;padding:11px 0;border:1px solid var(--line);background:#fff;border-radius:11px;
+  font-weight:500;font-size:16px;color:var(--ink);cursor:pointer;transition:.13s}
+.seg button:hover{border-color:var(--blue);color:var(--blue)}
+.seg button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.select{width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-size:16px;font-family:inherit;color:var(--ink);outline:none;
+  appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'><path d='M1 1l5 5 5-5' stroke='%236e6e73' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 15px center}
+.select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,113,227,.15)}
+textarea.input{resize:vertical;min-height:80px}
+
+.subtotal{display:flex;justify-content:space-between;align-items:center;background:var(--bg2);border-radius:12px;padding:13px 18px;margin-top:18px;font-size:15px;font-weight:500}
+.subtotal b{font-size:17px;font-weight:600}
+
+/* peer accordion */
+.peer{border:1px solid var(--line2);border-radius:14px;margin-bottom:12px;overflow:hidden;background:#fff;transition:.15s}
+.peer.done{border-color:#c7ebd1;background:#fcfffd}
+.peer .ph{display:flex;align-items:center;gap:13px;padding:15px 17px;cursor:pointer;user-select:none}
+.peer .ph .ava{width:40px;height:40px;border-radius:50%;background:var(--bg2);color:var(--ink);display:grid;place-items:center;font-weight:600;font-size:15px;flex:0 0 auto}
+.peer.done .ph .ava{background:var(--green);color:#fff}
+.peer .ph .nm{flex:1;min-width:0}
+.peer .ph .nm b{font-weight:500;font-size:16px;display:block;line-height:1.25}
+.peer .ph .nm small{color:var(--muted);font-size:13px}
+.peer .ph .st{font-size:13px;color:var(--muted2);font-weight:500}
+.peer .ph .st.ok{color:var(--green)}
+.peer .ph .cv{color:var(--muted2);transition:.2s;font-size:13px}
+.peer.open .ph .cv{transform:rotate(180deg)}
+.peer .pb{display:none;padding:0 17px 14px}
+.peer.open .pb{display:block}
+
+/* vote */
+.vote{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:560px){.vote{grid-template-columns:1fr 1fr}}
+.vopt{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:13px;padding:14px 16px;cursor:pointer;transition:.13s;background:#fff}
+.vopt:hover{border-color:var(--blue)}
+.vopt.on{border-color:var(--blue);background:#f1f8ff}
+.vopt .rd{width:21px;height:21px;border-radius:50%;border:1.5px solid var(--line);flex:0 0 auto;display:grid;place-items:center;transition:.13s}
+.vopt.on .rd{border-color:var(--blue)}
+.vopt.on .rd:after{content:"";width:11px;height:11px;border-radius:50%;background:var(--blue)}
+.vopt .nm b{font-weight:500;font-size:15px;display:block}
+.vopt .nm small{color:var(--muted);font-size:13px}
+
+/* callout */
+.note{background:var(--bg2);border-radius:13px;padding:14px 17px;font-size:14px;color:var(--muted);margin:16px 0;line-height:1.5}
+.note b{color:var(--ink);font-weight:600}
+
+/* HR rows */
+.hrrow{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line2);flex-wrap:wrap}
+.hrrow:first-child{border-top:0}
+.hrrow .ava{width:38px;height:38px;border-radius:50%;background:var(--bg2);color:var(--ink);display:grid;place-items:center;font-weight:600;font-size:14px;flex:0 0 auto}
+.hrrow .nm{flex:1;min-width:130px}
+.hrrow .nm b{font-weight:500;font-size:15px;display:block}
+.hrrow .nm small{color:var(--muted);font-size:13px}
+.hrrow .late{display:flex;align-items:center;gap:8px}
+.hrrow .late input{width:62px;text-align:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px;font-size:16px;font-family:inherit;outline:none}
+.hrrow .late input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,113,227,.15)}
+.hrrow .sc{min-width:52px;text-align:right;font-weight:600;font-size:15px}
+
+/* results table */
+.rtable{width:100%;border-collapse:collapse;font-size:15px}
+.rtable th,.rtable td{padding:13px 10px;text-align:right;border-bottom:1px solid var(--line2);white-space:nowrap}
+.rtable th{font-size:12px;color:var(--muted2);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+.rtable td.l,.rtable th.l{text-align:left}
+.rtable .rank{width:34px;height:34px;border-radius:50%;background:var(--bg2);display:inline-grid;place-items:center;font-weight:600;font-size:14px}
+.rtable tr.top1 .rank{background:#fff3cf;color:var(--gold)}
+.rtable tr.top2 .rank{background:#eef0f2;color:#6b7280}
+.rtable tr.top3 .rank{background:#f6e9dc;color:#a8632a}
+.rtable td.total{font-weight:700;font-size:16px}
+.rtable td.prize{font-weight:600;color:var(--green)}
+.rscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.results-cards{display:none}
+
+/* footer submit */
+.footer{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-top:1px solid rgba(0,0,0,.08);padding:12px 22px;padding-bottom:calc(12px + env(safe-area-inset-bottom));display:none;align-items:center;gap:16px}
+.footer.show{display:flex}
+.footer .tot{flex:1;min-width:0}
+.footer .tot small{display:block;font-size:12px;color:var(--muted)}
+.footer .tot b{font-size:21px;font-weight:600}
+.footer .tot b span.unit{font-size:14px;color:var(--muted);font-weight:400}
+.wrap.with-footer{padding-bottom:96px}
+
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:70;display:none;align-items:center;justify-content:center;padding:20px}
+.overlay.show{display:flex}
+.modal{background:#fff;border-radius:20px;max-width:430px;width:100%;box-shadow:var(--shadow-l);overflow:hidden}
+.modal .mh{padding:20px 22px 0;font-size:20px;font-weight:600}
+.modal .mb{padding:16px 22px}
+.modal .mf{padding:12px 22px 20px;display:flex;gap:10px;justify-content:flex-end}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:94px;transform:translateX(-50%) translateY(16px);background:rgba(29,29,31,.95);color:#fff;
+  padding:13px 22px;border-radius:14px;font-size:15px;box-shadow:var(--shadow-l);opacity:0;transition:.28s;z-index:90;max-width:90%;text-align:center;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.bad{background:rgba(255,59,48,.96)}
+
+/* done */
+.done-ic{width:80px;height:80px;border-radius:50%;background:var(--green);display:grid;place-items:center;margin:0 auto 22px;font-size:40px;color:#fff}
+
+.spin{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;display:inline-block;animation:sp .7s linear infinite;vertical-align:-3px}
+.spin.blue{border-color:rgba(0,113,227,.25);border-top-color:var(--blue)}
+@keyframes sp{to{transform:rotate(360deg)}}
+.empty{text-align:center;color:var(--muted);padding:46px 20px}
+.empty .ic{font-size:34px;margin-bottom:10px}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="brand"><span class="mark">M</span><span>Mersi Hero</span></div>
+  <div class="sp"></div>
+  <select class="month hide" id="monthSel" aria-label="เดือนที่ประเมิน"></select>
+  <button class="gear hide" id="cfgBtn" title="ตั้งค่า URL">⚙</button>
+  <div class="who hide" id="whoBox"><span class="ava" id="whoAva">M</span><span id="whoName"></span></div>
+  <button class="lo hide" id="logoutBtn">ออกจากระบบ</button>
+</nav>
+
+<!-- ============ LOGIN ============ -->
+<section id="screen-login">
+  <div class="login-wrap">
+    <div class="eyebrow">Mersi Clinic Marketing</div>
+    <h1>Hero of the Month</h1>
+    <p class="sub">ทำงานดี ไอเดียดี ขยัน มีรางวัล</p>
+    <div class="login-card">
+      <div class="fld">
+        <label>ชื่อผู้ใช้</label>
+        <input class="input" id="liUser" autocomplete="username" placeholder="username" />
+      </div>
+      <div class="fld">
+        <label>รหัสผ่าน</label>
+        <input class="input" id="liPass" type="password" autocomplete="current-password" placeholder="••••••••" />
+      </div>
+      <div class="login-err" id="liErr"></div>
+      <button class="btn full" id="liBtn">ลงชื่อเข้าใช้</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMPLOYEE ============ -->
+<section id="screen-emp" class="hide">
+  <div class="wrap with-footer">
+    <div class="pagehead">
+      <h2>ประเมินผลงาน</h2>
+      <div class="lead" id="empLead">สวัสดี …</div>
+    </div>
+
+    <div class="block-title">① ประเมินตนเอง · หมวด C (10 คะแนน)</div>
+    <div class="card">
+      <p class="muted" style="margin:0 0 4px;font-size:15px">สะท้อนความรับผิดชอบและการพัฒนาตนเองอย่างตรงไปตรงมา</p>
+      <div id="selfItems"></div>
+      <div class="subtotal"><span>รวมประเมินตนเอง</span><b><span id="selfScore">0</span> / 10</b></div>
+    </div>
+
+    <div class="block-title">② ประเมินเพื่อนร่วมทีม · หมวด B (20 คะแนน)</div>
+    <div class="note">ให้คะแนนเพื่อนร่วมทีม <b>ทุกคน</b> (ไม่รวมตัวเอง) · <span id="peerProg">ให้คะแนนแล้ว 0 คน</span></div>
+    <div id="peerList"></div>
+
+    <div class="block-title">③ โหวตคนโดดเด่นประจำเดือน · หมวด B (5 คะแนน)</div>
+    <div class="card">
+      <p class="muted" style="margin:0 0 14px;font-size:15px">เลือกได้ <b>เพียง 1 คน</b> ที่เดือนนี้โดดเด่นที่สุด — ช่วยทีมเป็นพิเศษ · รับผิดชอบสูง · แก้ปัญหาเก่ง · ทำงานเกินคาด · มีไอเดียพัฒนาทีม</p>
+      <div class="vote" id="voteGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUPERVISOR HOME ============ -->
+<section id="screen-sup-home" class="hide">
+  <div class="wrap">
+    <div class="hero">
+      <h1 id="supHi">สวัสดี</h1>
+      <p>เลือกสิ่งที่ต้องการทำในเดือนนี้</p>
+    </div>
+    <div class="grid2">
+      <div class="tile" id="tileScore">
+        <div class="ic">📝</div>
+        <h3>ให้คะแนนพนักงาน</h3>
+        <p>ประเมินผลงานจริง (A) และภาพรวมรายบุคคล (D) — รวม 60 คะแนนต่อคน</p>
+        <span class="go">เริ่มให้คะแนน →</span>
+      </div>
+      <div class="tile" id="tileResults">
+        <div class="ic">📊</div>
+        <h3>ดูผลสรุป &amp; อันดับ</h3>
+        <p>คะแนนรวม 100 ของทุกคน จัดอันดับ พร้อมเงินรางวัลที่แนะนำ</p>
+        <span class="go">ดูผลสรุป →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUPERVISOR SCORING ============ -->
+<section id="screen-sup" class="hide">
+  <div class="wrap with-footer">
+    <button class="link" data-back="sup-home">‹ กลับ</button>
+    <div class="pagehead">
+      <h2>ให้คะแนนพนักงาน</h2>
+      <div class="lead">หมวด A (ผลงาน &amp; วินัย 30) + หมวด D (ภาพรวม 30)</div>
+    </div>
+    <div class="card">
+      <div class="fld" style="margin:0">
+        <label>เลือกพนักงานที่จะประเมิน</label>
+        <select class="select" id="supWho"><option value="">— เลือกพนักงาน —</option></select>
+      </div>
+      <p class="muted" style="font-size:13px;margin:10px 2px 0">การเข้างานตรงเวลา (A1 · 5 คะแนน) ให้ HR เป็นผู้บันทึก</p>
+    </div>
+
+    <div id="supForms" class="hide">
+      <div class="block-title">หมวด A · ผลงานจริงและวินัย</div>
+      <div class="card">
+        <div id="supA"></div>
+        <div class="subtotal"><span>รวมหมวด A (ส่วนหัวหน้า)</span><b><span id="supAScore">0</span> / 30</b></div>
+      </div>
+      <div class="block-title">หมวด D · ภาพรวมจากผู้บริหาร</div>
+      <div class="card">
+        <div id="supD"></div>
+        <div class="subtotal"><span>รวมหมวด D</span><b><span id="supDScore">0</span> / 30</b></div>
+      </div>
+      <div class="card">
+        <div class="fld" style="margin:0">
+          <label>หมายเหตุ / Feedback (ไม่บังคับ)</label>
+          <textarea class="input" id="supNote" placeholder="จุดเด่น / สิ่งที่อยากให้พัฒนาในเดือนถัดไป…"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section id="screen-results" class="hide">
+  <div class="wrap">
+    <button class="link" data-back="sup-home">‹ กลับ</button>
+    <div class="pagehead" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+      <div><h2>ผลสรุป &amp; อันดับ</h2><div class="lead" id="resLead">เดือน …</div></div>
+      <button class="btn sec sm" id="resReload">↻ รีเฟรช</button>
+    </div>
+    <div class="card" style="padding:8px 18px">
+      <div id="resBody"><div class="empty"><div class="ic">⏳</div>กำลังโหลด…</div></div>
+    </div>
+    <p class="muted" style="font-size:13px;margin:14px 4px">* เงินรางวัลคำนวณอัตโนมัติ ปรับได้ในชีต EVAL_SUMMARY · คะแนนเพื่อน (B) ใช้ค่าเฉลี่ยจากผู้ประเมินทุกคน</p>
+  </div>
+</section>
+
+<!-- ============ HR ============ -->
+<section id="screen-hr" class="hide">
+  <div class="wrap with-footer">
+    <div class="pagehead">
+      <h2>การเข้างานตรงเวลา</h2>
+      <div class="lead">หมวด A1 · 5 คะแนน — กรอกจำนวนครั้งที่มาสายของแต่ละคน</div>
+    </div>
+    <div class="note">ไม่สาย = 5 · 1–2 ครั้ง = 4 · 3–4 ครั้ง = 3 · 5–6 ครั้ง = 2 · 7 ครั้ง = 1 · ตั้งแต่ 8 ครั้ง = 0 · <b>ไม่นับ</b> ป่วย/ลากิจ/ได้รับอนุมัติ</div>
+    <div class="card"><div id="hrList"></div></div>
+  </div>
+</section>
+
+<!-- ============ DONE ============ -->
+<section id="screen-done" class="hide">
+  <div class="wrap">
+    <div class="card center" style="margin-top:40px;max-width:520px;margin-left:auto;margin-right:auto">
+      <div class="done-ic">✓</div>
+      <h2 style="font-size:27px;margin-bottom:8px">ส่งคะแนนเรียบร้อย</h2>
+      <p class="muted" id="doneMsg" style="margin:0 0 24px">ขอบคุณที่ร่วมประเมิน</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn sec" id="doneAgain">ทำรายการอื่น</button>
+        <button class="btn" id="doneHome">เสร็จสิ้น</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<div class="footer" id="footer">
+  <div class="tot"><small id="footLabel">คะแนนรวม</small><b><span id="footScore">0</span><span class="unit" id="footMax"></span></b></div>
+  <button class="btn" id="submitBtn">ส่งคะแนน</button>
+</div>
+
+<!-- settings -->
+<div class="overlay" id="cfgOverlay">
+  <div class="modal">
+    <div class="mh">การเชื่อมต่อ</div>
+    <div class="mb">
+      <div class="fld"><label>Apps Script Web App URL</label>
+        <input class="input" id="cfgUrl" placeholder="https://script.google.com/macros/s/…/exec" /></div>
+      <p class="muted" id="cfgStatus" style="font-size:13px;margin:4px 2px 0">สถานะ: ยังไม่ได้ตั้งค่า</p>
+    </div>
+    <div class="mf">
+      <button class="btn sec sm" id="cfgTest">ทดสอบ</button>
+      <button class="btn sm" id="cfgSave">บันทึก</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================================
+   CONFIG
+   ========================================================================= */
+const TEAM = [
+  {id:'ED1', name:'สุพิสิฐ เหมะ', nick:'อู๋', pos:'Editor'},
+  {id:'ED2', name:'พัชรพล อรุณสำราญ', nick:'ปิง', pos:'Editor'},
+  {id:'ED3', name:'ชัญญานุต เดชวิไลศรี', nick:'ยู', pos:'Editor'},
+  {id:'GR1', name:'จุฬาลักษณ์ เลี่ยมอยู่', nick:'เตย', pos:'Graphic'},
+  {id:'GR2', name:'สุภาวดี หงษ์เหิน', nick:'แบม', pos:'Graphic'},
+  {id:'GR3', name:'นัฐนิกา ทองเขียน', nick:'ปอ', pos:'Graphic'},
+  {id:'AD1', name:'วิมลรัตน์ ภัยธิราช', nick:'หมิว', pos:'Ad Optimization'},
+  {id:'AD2', name:'สุริยวงศ์ จองแค', nick:'ไทเกอร์', pos:'Ad Optimization'},
+  {id:'KOL1', name:'ปรัศมล พุทธิเศวต', nick:'จ๋า', pos:'KOL Specialist'},
+  {id:'CC1', name:'นีรนารา คณานุรักษ์สกุล', nick:'นีร', pos:'Content Creator'}
+];
+
+// ---- ผู้ใช้และรหัสผ่าน (แก้ได้ที่นี่) ----
+// role: 'employee' = ประเมินตนเอง+เพื่อน | 'supervisor' = ให้คะแนน A+D + ดูผล | 'hr' = เวลาเข้างาน
+const USERS = [
+  {u:'au',    p:'Au@2026',    role:'employee', tid:'ED1'},
+  {u:'ping',  p:'Ping@2026',  role:'employee', tid:'ED2'},
+  {u:'yu',    p:'Yu@2026',    role:'employee', tid:'ED3'},
+  {u:'toey',  p:'Toey@2026',  role:'employee', tid:'GR1'},
+  {u:'bam',   p:'Bam@2026',   role:'employee', tid:'GR2'},
+  {u:'por',   p:'Por@2026',   role:'employee', tid:'GR3'},
+  {u:'miu',   p:'Miu@2026',   role:'employee', tid:'AD1'},
+  {u:'tiger', p:'Tiger@2026', role:'employee', tid:'AD2'},
+  {u:'ja',    p:'Ja@2026',    role:'employee', tid:'KOL1'},
+  {u:'nir',   p:'Nir@2026',   role:'employee', tid:'CC1'},
+  {u:'head',  p:'Head@2026',  role:'supervisor', name:'หัวหน้าทีม'},
+  {u:'boss',  p:'Boss@2026',  role:'supervisor', name:'ผู้บังคับบัญชา'},
+  {u:'hr',    p:'Hr@2026',    role:'hr', name:'ฝ่ายบุคคล (HR)'}
+];
+
+const MONTHS = [
+  {v:'2026-06', t:'มิถุนายน 2026'},
+  {v:'2026-07', t:'กรกฎาคม 2026'},
+  {v:'2026-08', t:'สิงหาคม 2026'}
+];
+
+let WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzBruX3_eZsyDQboYLz0OjXb1Xps2H8mOWBfiaoXQ6Lq0De3Ode4XU1-yUE7H9hgoa1/exec";
+var INJECTED_URL = "<?= WEBAPP_URL ?>"; // ถูกแทนค่าเมื่อเสิร์ฟผ่าน Apps Script
+
+const SELF_ITEMS = [
+  {code:'C1', label:'ทำผลงานได้จำนวนและคุณภาพ ตามเป้าหมายประจำเดือน', max:4},
+  {code:'C2', label:'การวางแผนงานได้บรรลุตามเป้าหมาย', max:2},
+  {code:'C3', label:'ประเมินการทำงานทำได้ดีในเดือนนั้น', max:2},
+  {code:'C4', label:'มีการเสนอแนวทางพัฒนางานของตัวเองในเดือนถัดไป', max:2}
+];
+const PEER_ITEMS = [
+  {code:'B1', label:'การทำงานประสานกับเพื่อนในทีม', max:5},
+  {code:'B2', label:'ความมีน้ำใจและช่วยเหลือเพื่อนร่วมทีม', max:5},
+  {code:'B3', label:'ความรับผิดชอบต่องานที่เกี่ยวข้องกับทีม', max:5},
+  {code:'B4', label:'การสื่อสาร ทำงานร่วมกัน และไม่สร้างปัญหาในทีม', max:5}
+];
+const SUP_A_ITEMS = [
+  {code:'A2', label:'ส่งงานครบตามกำหนดเวลา', max:10},
+  {code:'A3', label:'ปริมาณชิ้นงานทำได้จริงเทียบกับเป้าหมายรายเดือน', max:10, type:'percent'},
+  {code:'A4', label:'การวางแผนงานและทำงานเสร็จตามกำหนด', max:5},
+  {code:'A5', label:'คุณภาพงานและจำนวนงานที่ต้องแก้ไขซ้ำ', max:5}
+];
+const SUP_D_ITEMS = [
+  {code:'D1', label:'ความตั้งใจ ใส่ใจ และรับผิดชอบต่องาน', max:5},
+  {code:'D2', label:'ความกระตือรือร้นในการทำงาน', max:5},
+  {code:'D3', label:'ไอเดียสร้างสรรค์และการเสนอแนวคิดใหม่', max:5},
+  {code:'D4', label:'การทำงานกับบุคคลภายนอก (KOL / Agency / Partner / สาขา)', max:5},
+  {code:'D5', label:'ความสามารถในการแก้ปัญหาเฉพาะหน้า', max:5},
+  {code:'D6', label:'ภาพรวมความโดดเด่นของเดือนนั้น', max:5}
+];
+const PCT_OPTS = [
+  {t:'ทำได้ 100% ขึ้นไป', s:10},{t:'ทำได้ 90–99%', s:8},{t:'ทำได้ 80–89%', s:6},{t:'ทำได้ 70–79%', s:4},{t:'ต่ำกว่า 70%', s:2}
+];
+function lateToScore(n){ n=Number(n)||0; if(n<=0)return 5; if(n<=2)return 4; if(n<=4)return 3; if(n<=6)return 2; if(n===7)return 1; return 0; }
+
+/* =========================================================================
+   STATE
+   ========================================================================= */
+const CFG_KEY='mersi_hero_cfg_v1', SES_KEY='mersi_hero_session_v1', SES_HOURS=8;
+let session=null, state={month:MONTHS[0].v};
+let selfScores={}, peerScores={}, voteFor=null, supA={}, supD={}, hrLate={};
+
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const byId=id=>TEAM.find(m=>m.id===id);
+const initials=m=>(m.nick||m.name||'?').slice(0,2);
+const fullName=m=>m.name+' ('+m.nick+')';
+
+/* =========================================================================
+   INIT
+   ========================================================================= */
+function init(){
+  const ms=$('#monthSel'); MONTHS.forEach(m=>{const o=document.createElement('option');o.value=m.v;o.textContent=m.t;ms.appendChild(o);});
+  ms.value=state.month; ms.addEventListener('change',e=>{ state.month=e.target.value; if(!$('#screen-results').classList.contains('hide')) loadResults(); });
+
+  try{ const c=JSON.parse(localStorage.getItem(CFG_KEY)||'null'); if(c&&c.url) WEB_APP_URL=c.url; }catch(e){}
+  if(typeof INJECTED_URL==='string' && INJECTED_URL.indexOf('http')===0){ WEB_APP_URL=INJECTED_URL; }
+  updateCfgStatus();
+
+  $('#liBtn').addEventListener('click',doLogin);
+  $('#liPass').addEventListener('keydown',e=>{ if(e.key==='Enter')doLogin(); });
+  $('#liUser').addEventListener('keydown',e=>{ if(e.key==='Enter')$('#liPass').focus(); });
+  $('#logoutBtn').addEventListener('click',doLogout);
+  $('#cfgBtn').addEventListener('click',()=>{ $('#cfgUrl').value=WEB_APP_URL; $('#cfgOverlay').classList.add('show'); });
+  $('#cfgSave').addEventListener('click',saveCfg);
+  $('#cfgTest').addEventListener('click',testCfg);
+  $('#cfgOverlay').addEventListener('click',e=>{ if(e.target.id==='cfgOverlay')$('#cfgOverlay').classList.remove('show'); });
+  $$('[data-back]').forEach(b=>b.addEventListener('click',()=>showScreen('#screen-'+b.dataset.back)));
+  $('#tileScore').addEventListener('click',openSupScore);
+  $('#tileResults').addEventListener('click',openResults);
+  $('#resReload').addEventListener('click',loadResults);
+  $('#supWho').addEventListener('change',onSupWho);
+  $('#submitBtn').addEventListener('click',submit);
+  $('#doneAgain').addEventListener('click',doneAgain);
+  $('#doneHome').addEventListener('click',routeByRole);
+
+  // restore session
+  try{ const s=JSON.parse(localStorage.getItem(SES_KEY)||'null'); if(s&&s.exp>Date.now()) session=s; }catch(e){}
+  if(session) routeByRole(); else showLogin();
+}
+
+/* =========================================================================
+   AUTH
+   ========================================================================= */
+function showLogin(){
+  session=null; $('#whoBox').classList.add('hide'); $('#logoutBtn').classList.add('hide');
+  $('#monthSel').classList.add('hide'); $('#cfgBtn').classList.remove('hide');
+  $('#footer').classList.remove('show');
+  showScreen('#screen-login');
+}
+function doLogin(){
+  const u=$('#liUser').value.trim().toLowerCase(), p=$('#liPass').value;
+  const found=USERS.find(x=>x.u.toLowerCase()===u && x.p===p);
+  if(!found){ $('#liErr').textContent='ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง'; return; }
+  $('#liErr').textContent='';
+  const member = found.tid ? byId(found.tid) : null;
+  session={ u:found.u, role:found.role, tid:found.tid||null,
+            name: member ? fullName(member) : (found.name||found.u),
+            exp: Date.now()+SES_HOURS*3600*1000 };
+  localStorage.setItem(SES_KEY,JSON.stringify(session));
+  $('#liPass').value='';
+  routeByRole();
+}
+function doLogout(){ localStorage.removeItem(SES_KEY); $('#liUser').value=''; showLogin(); }
+
+function routeByRole(){
+  if(!session){ showLogin(); return; }
+  // nav
+  $('#whoBox').classList.remove('hide'); $('#logoutBtn').classList.remove('hide'); $('#cfgBtn').classList.remove('hide');
+  $('#whoName').textContent=session.name; $('#whoAva').textContent=(session.tid?byId(session.tid).nick:session.name).slice(0,2);
+  selfScores={};peerScores={};voteFor=null;supA={};supD={};hrLate={};
+  if(session.role==='employee'){ $('#monthSel').classList.remove('hide'); openEmployee(); }
+  else if(session.role==='supervisor'){ $('#monthSel').classList.remove('hide'); $('#supHi').textContent='สวัสดี '+session.name; showScreen('#screen-sup-home'); $('#footer').classList.remove('show'); }
+  else if(session.role==='hr'){ $('#monthSel').classList.remove('hide'); openHR(); }
+}
+
+/* =========================================================================
+   NAV
+   ========================================================================= */
+function showScreen(id){ $$('section').forEach(s=>s.classList.add('hide')); $(id).classList.remove('hide'); window.scrollTo({top:0,behavior:'smooth'}); }
+
+/* segmented control */
+function seg(code,max){ let h='<div class="seg" data-code="'+code+'">'; for(let i=0;i<=max;i++)h+='<button type="button" data-v="'+i+'">'+i+'</button>'; return h+'</div>'; }
+function wireSeg(box,store,cb){ box.querySelectorAll('.seg').forEach(s=>s.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return; const code=s.dataset.code;
+  s.querySelectorAll('button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  store[code]=Number(b.dataset.v); cb&&cb();
+})); }
+function sumVals(o){ return Object.values(o).reduce((a,b)=>a+(Number(b)||0),0); }
+
+/* =========================================================================
+   EMPLOYEE
+   ========================================================================= */
+function openEmployee(){
+  const me=byId(session.tid);
+  $('#empLead').textContent='สวัสดี '+me.name+' ('+me.nick+') · '+me.pos;
+  selfScores={};peerScores={};voteFor=null;
+  // self
+  let s=''; SELF_ITEMS.forEach(it=>s+='<div class="item"><div class="q"><span class="t">'+it.label+'</span><span class="mx">เต็ม '+it.max+'</span></div>'+seg(it.code,it.max)+'</div>');
+  $('#selfItems').innerHTML=s; wireSeg($('#selfItems'),selfScores,recalcEmp);
+  // peers
+  const peers=TEAM.filter(m=>m.id!==me.id); let p='';
+  peers.forEach(m=>{ peerScores[m.id]={};
+    p+='<div class="peer" data-id="'+m.id+'"><div class="ph"><span class="ava">'+initials(m)+'</span>'
+      +'<span class="nm"><b>'+m.name+' ('+m.nick+')</b><small>'+m.pos+'</small></span>'
+      +'<span class="st" data-st="'+m.id+'">0/4</span><span class="cv">▾</span></div><div class="pb">';
+    PEER_ITEMS.forEach(it=>p+='<div class="item"><div class="q"><span class="t">'+it.label+'</span><span class="mx">เต็ม '+it.max+'</span></div>'+seg(m.id+'__'+it.code,it.max)+'</div>');
+    p+='</div></div>';
+  });
+  $('#peerList').innerHTML=p;
+  $$('#peerList .peer').forEach(card=>{
+    card.querySelector('.ph').addEventListener('click',ev=>{ if(ev.target.closest('.seg'))return; card.classList.toggle('open'); });
+    card.querySelectorAll('.seg').forEach(sg=>sg.addEventListener('click',ev=>{
+      const b=ev.target.closest('button'); if(!b)return; const parts=sg.dataset.code.split('__'); const pid=parts[0],code=parts[1];
+      sg.querySelectorAll('button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+      peerScores[pid][code]=Number(b.dataset.v); updatePeerStatus(pid); recalcEmp();
+    }));
+  });
+  // vote
+  let vg=''; peers.forEach(m=>vg+='<div class="vopt" data-id="'+m.id+'"><span class="rd"></span><span class="nm"><b>'+m.name+' ('+m.nick+')</b><small>'+m.pos+'</small></span></div>');
+  $('#voteGrid').innerHTML=vg;
+  $$('#voteGrid .vopt').forEach(o=>o.addEventListener('click',()=>{ $$('#voteGrid .vopt').forEach(x=>x.classList.remove('on')); o.classList.add('on'); voteFor=o.dataset.id; recalcEmp(); }));
+
+  $('#footLabel').textContent='คะแนนที่ให้ทั้งหมด'; $('#footMax').textContent='';
+  showScreen('#screen-emp'); $('#footer').classList.add('show'); recalcEmp();
+}
+function updatePeerStatus(pid){ const n=Object.keys(peerScores[pid]||{}).length; const el=document.querySelector('[data-st="'+pid+'"]');
+  if(el){ el.textContent=n+'/4'; el.classList.toggle('ok',n===4); } const c=document.querySelector('.peer[data-id="'+pid+'"]'); if(c)c.classList.toggle('done',n===4); }
+function recalcEmp(){ const sv=sumVals(selfScores); $('#selfScore').textContent=sv;
+  let tot=0,done=0; Object.keys(peerScores).forEach(pid=>{ const n=Object.keys(peerScores[pid]).length; if(n===4)done++; tot+=sumVals(peerScores[pid]); });
+  $('#peerProg').textContent='ให้คะแนนแล้ว '+done+'/'+(TEAM.length-1)+' คน'; $('#footScore').textContent=sv+tot+(voteFor?5:0); }
+
+/* =========================================================================
+   SUPERVISOR
+   ========================================================================= */
+function openSupScore(){
+  $('#supWho').innerHTML='<option value="">— เลือกพนักงาน —</option>';
+  TEAM.forEach(m=>{ const o=document.createElement('option'); o.value=m.id; o.textContent=m.name+' ('+m.nick+') · '+m.pos; $('#supWho').appendChild(o); });
+  $('#supWho').value=''; $('#supForms').classList.add('hide'); $('#supNote').value=''; supA={};supD={};
+  showScreen('#screen-sup'); $('#footer').classList.remove('show');
+}
+function onSupWho(e){
+  if(!e.target.value){ $('#supForms').classList.add('hide'); $('#footer').classList.remove('show'); return; }
+  supA={};supD={};
+  let a=''; SUP_A_ITEMS.forEach(it=>{ a+='<div class="item"><div class="q"><span class="t">'+it.label+'</span><span class="mx">เต็ม '+it.max+'</span></div>';
+    if(it.type==='percent'){ a+='<select class="select" data-code="'+it.code+'"><option value="">— เลือกผลงานจริงเทียบเป้า —</option>'; PCT_OPTS.forEach(o=>a+='<option value="'+o.s+'">'+o.t+' → '+o.s+' คะแนน</option>'); a+='</select>'; }
+    else a+=seg(it.code,it.max); a+='</div>'; });
+  $('#supA').innerHTML=a; wireSeg($('#supA'),supA,recalcSup);
+  $$('#supA select').forEach(sel=>sel.addEventListener('change',ev=>{ const c=ev.target.dataset.code; if(ev.target.value==='')delete supA[c]; else supA[c]=Number(ev.target.value); recalcSup(); }));
+  let d=''; SUP_D_ITEMS.forEach(it=>d+='<div class="item"><div class="q"><span class="t">'+it.label+'</span><span class="mx">เต็ม '+it.max+'</span></div>'+seg(it.code,it.max)+'</div>');
+  $('#supD').innerHTML=d; wireSeg($('#supD'),supD,recalcSup);
+  $('#supForms').classList.remove('hide'); $('#footLabel').textContent='คะแนนรวม (A+D)'; $('#footMax').textContent=' / 60';
+  $('#footer').classList.add('show'); recalcSup();
+}
+function recalcSup(){ const a=sumVals(supA),d=sumVals(supD); $('#supAScore').textContent=a; $('#supDScore').textContent=d; $('#footScore').textContent=a+d; }
+
+/* =========================================================================
+   HR
+   ========================================================================= */
+function openHR(){ hrLate={}; let h='';
+  TEAM.forEach(m=>h+='<div class="hrrow"><span class="ava">'+initials(m)+'</span><span class="nm"><b>'+m.name+' ('+m.nick+')</b><small>'+m.pos+'</small></span>'
+    +'<span class="late"><span class="muted" style="font-size:13px">มาสาย</span><input type="number" min="0" max="31" inputmode="numeric" data-id="'+m.id+'" placeholder="0"><span class="muted" style="font-size:13px">ครั้ง</span></span>'
+    +'<span class="sc" data-sc="'+m.id+'">—</span></div>');
+  $('#hrList').innerHTML=h;
+  $$('#hrList input').forEach(inp=>inp.addEventListener('input',ev=>{ const id=ev.target.dataset.id,v=ev.target.value;
+    if(v===''){ delete hrLate[id]; document.querySelector('[data-sc="'+id+'"]').textContent='—'; }
+    else { const n=Math.max(0,parseInt(v)||0); hrLate[id]=n; document.querySelector('[data-sc="'+id+'"]').textContent=lateToScore(n)+' / 5'; } recalcHR(); }));
+  $('#footLabel').textContent='กรอกแล้ว'; $('#footMax').textContent=' คน';
+  showScreen('#screen-hr'); $('#footer').classList.add('show'); recalcHR();
+}
+function recalcHR(){ $('#footScore').textContent=Object.keys(hrLate).length; }
+
+/* =========================================================================
+   RESULTS
+   ========================================================================= */
+function openResults(){ showScreen('#screen-results'); $('#footer').classList.remove('show'); loadResults(); }
+async function loadResults(){
+  $('#resLead').textContent='เดือน '+(MONTHS.find(m=>m.v===state.month)||{}).t;
+  $('#resBody').innerHTML='<div class="empty"><div class="ic">⏳</div>กำลังโหลด…</div>';
+  if(!WEB_APP_URL){ $('#resBody').innerHTML='<div class="empty"><div class="ic">⚙️</div>ยังไม่ได้ตั้งค่า URL — กดไอคอน ⚙ มุมขวาบน</div>'; return; }
+  try{
+    const url=WEB_APP_URL+(WEB_APP_URL.indexOf('?')>-1?'&':'?')+'action=summary&month='+encodeURIComponent(state.month);
+    const r=await fetch(url); const j=await r.json();
+    if(!j.ok||!j.results){ throw new Error('bad'); }
+    renderResults(j.results);
+  }catch(e){ $('#resBody').innerHTML='<div class="empty"><div class="ic">📭</div>ยังไม่มีข้อมูลของเดือนนี้ หรือเชื่อมต่อไม่ได้<br><small>ลองรีเฟรช หรือตรวจการ Deploy</small></div>'; }
+}
+function renderResults(res){
+  const has=res.some(r=>r.total>0);
+  if(!has){ $('#resBody').innerHTML='<div class="empty"><div class="ic">📭</div>ยังไม่มีคะแนนส่งเข้ามาในเดือนนี้</div>'; return; }
+  let h='<div class="rscroll"><table class="rtable"><thead><tr><th>#</th><th class="l">ชื่อ</th><th>A·35</th><th>B·25</th><th>C·10</th><th>D·30</th><th>รวม</th><th>โหวต</th><th>รางวัล</th></tr></thead><tbody>';
+  res.forEach(r=>{ const cls=r.rank===1?'top1':r.rank===2?'top2':r.rank===3?'top3':'';
+    h+='<tr class="'+cls+'"><td><span class="rank">'+(r.rank||'–')+'</span></td>'
+      +'<td class="l"><b style="font-weight:600">'+r.name+'</b><br><small style="color:var(--muted)">'+r.pos+'</small></td>'
+      +'<td>'+r.A+'</td><td>'+r.B+'</td><td>'+r.C+'</td><td>'+r.D+'</td>'
+      +'<td class="total">'+r.total+'</td><td>'+(r.votes||0)+'</td>'
+      +'<td class="prize">'+(r.prize?Number(r.prize).toLocaleString()+' ฿':'–')+'</td></tr>';
+  });
+  h+='</tbody></table></div>';
+  $('#resBody').innerHTML=h;
+}
+
+/* =========================================================================
+   SUBMIT
+   ========================================================================= */
+function rec(role,ev,t,cat,code,label,score,max,note){
+  return { timestamp:new Date().toISOString(), month:state.month, evaluatorRole:role, evaluatorId:ev.id, evaluatorName:ev.name,
+           targetId:t.id, targetName:t.name+' ('+t.nick+')', targetPos:t.pos||'', category:cat, itemCode:code, itemLabel:label,
+           score:(score==null?'':score), maxScore:max, note:note||'' };
+}
+function buildRecords(){
+  const out=[];
+  if(session.role==='employee'){ const me=byId(session.tid);
+    SELF_ITEMS.forEach(it=>out.push(rec('self',me,me,'C',it.code,it.label,selfScores[it.code],it.max)));
+    Object.keys(peerScores).forEach(pid=>{ const t=byId(pid); PEER_ITEMS.forEach(it=>out.push(rec('peer',me,t,'B',it.code,it.label,peerScores[pid][it.code],it.max))); });
+    out.push(rec('peer',me,byId(voteFor),'B','B5_VOTE','โหวตคนโดดเด่นประจำเดือน',5,5));
+  }
+  if(session.role==='supervisor'){ const t=byId($('#supWho').value); const ev={id:session.u,name:session.name}; const note=$('#supNote').value||'';
+    SUP_A_ITEMS.forEach(it=>out.push(rec('supervisor',ev,t,'A',it.code,it.label,supA[it.code],it.max,note)));
+    SUP_D_ITEMS.forEach(it=>out.push(rec('supervisor',ev,t,'D',it.code,it.label,supD[it.code],it.max,note)));
+  }
+  if(session.role==='hr'){ const ev={id:'HR',name:session.name};
+    Object.keys(hrLate).forEach(id=>{ const t=byId(id),n=hrLate[id]; out.push(rec('hr',ev,t,'A','A1','การเข้างานตรงเวลา (มาสาย '+n+' ครั้ง)',lateToScore(n),5,'late='+n)); });
+  }
+  return out;
+}
+function validate(){
+  if(session.role==='employee'){
+    for(const it of SELF_ITEMS) if(selfScores[it.code]==null) return 'กรุณาให้คะแนนประเมินตนเองให้ครบทุกข้อ';
+    for(const pid of Object.keys(peerScores)) if(Object.keys(peerScores[pid]).length<4) return 'ยังให้คะแนนเพื่อนไม่ครบ: '+fullName(byId(pid));
+    if(!voteFor) return 'กรุณาโหวตคนโดดเด่นประจำเดือน 1 คน';
+  }
+  if(session.role==='supervisor'){
+    if(!$('#supWho').value) return 'กรุณาเลือกพนักงานที่จะประเมิน';
+    for(const it of SUP_A_ITEMS) if(supA[it.code]==null) return 'กรุณากรอกหมวด A ให้ครบทุกข้อ';
+    for(const it of SUP_D_ITEMS) if(supD[it.code]==null) return 'กรุณากรอกหมวด D ให้ครบทุกข้อ';
+  }
+  if(session.role==='hr'){ if(Object.keys(hrLate).length===0) return 'กรุณากรอกอย่างน้อย 1 คน'; }
+  return null;
+}
+async function submit(){
+  const err=validate(); if(err){ toast(err,true); return; }
+  if(!WEB_APP_URL){ toast('ยังไม่ได้ตั้งค่า URL — กดไอคอน ⚙ มุมขวาบน',true); $('#cfgOverlay').classList.add('show'); return; }
+  const btn=$('#submitBtn'),old=btn.innerHTML; btn.disabled=true; btn.innerHTML='<span class="spin"></span> กำลังส่ง…';
+  try{
+    const r=await fetch(WEB_APP_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({type:'eval_submit',role:session.role,month:state.month,records:buildRecords()})});
+    let ok=r.ok; try{ const j=await r.json(); ok=j&&j.ok!==false; }catch(e){}
+    if(!ok)throw new Error('s'); showDone();
+  }catch(e){ toast('ส่งไม่สำเร็จ: ตรวจ URL / การ Deploy (Anyone)',true); }
+  finally{ btn.disabled=false; btn.innerHTML=old; }
+}
+function showDone(){
+  let m='ขอบคุณที่ร่วมประเมิน';
+  if(session.role==='employee') m='บันทึกการประเมินของ '+session.name+' แล้ว';
+  if(session.role==='supervisor') m='บันทึกคะแนน A + D ของ '+byId($('#supWho').value).name+' แล้ว';
+  if(session.role==='hr') m='บันทึกการเข้างาน '+Object.keys(hrLate).length+' คน แล้ว';
+  $('#doneMsg').textContent=m; $('#footer').classList.remove('show'); showScreen('#screen-done');
+}
+function doneAgain(){
+  if(session.role==='employee') openEmployee();
+  else if(session.role==='supervisor') openSupScore();
+  else if(session.role==='hr') openHR();
+}
+
+/* =========================================================================
+   SETTINGS
+   ========================================================================= */
+function saveCfg(){ WEB_APP_URL=$('#cfgUrl').value.trim(); localStorage.setItem(CFG_KEY,JSON.stringify({url:WEB_APP_URL})); updateCfgStatus(); toast('บันทึก URL แล้ว'); $('#cfgOverlay').classList.remove('show'); }
+function updateCfgStatus(){ const e=$('#cfgStatus'); if(!e)return; e.textContent=WEB_APP_URL?'สถานะ: ✅ ตั้งค่าแล้ว':'สถานะ: ⚠️ ยังไม่ได้ตั้งค่า URL'; }
+async function testCfg(){ const u=$('#cfgUrl').value.trim(); if(!u){ toast('กรอก URL ก่อน',true); return; } toast('กำลังทดสอบ…');
+  try{ const r=await fetch(u,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({type:'ping'})}); const j=await r.json();
+    toast(j&&j.ok?'เชื่อมต่อสำเร็จ ✅':'ตอบกลับผิดปกติ',!(j&&j.ok)); }catch(e){ toast('เชื่อมต่อไม่ได้ ตรวจ URL /exec + Deploy Anyone',true); } }
+
+let toastT; function toast(msg,bad){ const t=$('#toast'); t.textContent=msg; t.className='toast show'+(bad?' bad':''); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),3200); }
+
+init();
+</script>
+</body>
+</html>
